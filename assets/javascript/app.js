@@ -22,7 +22,6 @@ var searchTerm;
 var foodResponse;
 
 $("#submitBttn").on("click", function(event){
-
     event.preventDefault();
     searchTerm = $("#foodInput").val().trim();
     console.log(searchTerm); 
@@ -35,6 +34,21 @@ $("#submitBttn").on("click", function(event){
     })
     .then(function(response){
         console.log(response);
+        var results = response.hits;
+
+        for (var i = 0; i < results.length; i++){
+            var imgSrc = results[i].recipe.image;
+            var recipeTitle = results[i].recipe.label;
+            var recipeLink = results[i].recipe.url;
+            var prepTime = results[i].recipe.totalTime;
+            var ingredients = results[i].recipe.ingredientLines;
+            var foodResults = $("<div>");
+            console.log(recipeLink , recipeTitle , ingredients , prepTime);
+            var foodImg = $("<img>");
+            foodImg.attr("src" , imgSrc);
+            $(foodResults).append(foodImg);
+            $("#resultsDiv").append(foodResults);
+        }
     });
     
 })
