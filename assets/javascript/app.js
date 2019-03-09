@@ -16,9 +16,11 @@ console.log("it works");
 //APP Key = 11d67226f6f5e59a6706570b9578fece
 
 //https://sandbox-api.brewerydb.com/v2/ API key b77b0aed77b08ea4a53b9e27b3103a48
+  
 
-
+// Global Variables
 var searchTerm;
+var database = firebase.database();
 var foodResponse;
 
 $("#submitBttn").on("click", function(event){
@@ -51,6 +53,20 @@ $("#submitBttn").on("click", function(event){
         }
     });
     
+})
+
+//write search to FireBase
+$("#submitBttn").on("click", function(){
+
+  event.preventDefault();
+  searchTerm = $("#foodInput").val().trim();
+  function writeUserData(userId, name, email, imageUrl) {
+    firebase.database().ref().set({
+      Search: searchTerm,
+     
+    });
+  }
+  writeUserData();
 })
 
 
