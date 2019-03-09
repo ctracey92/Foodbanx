@@ -1,3 +1,14 @@
+ // Initialize Firebase
+ var config = {
+    apiKey: "AIzaSyAuT5dcM5ONqs-s91Q7WoDPh251EGdAxGU",
+    authDomain: "project1-25f92.firebaseapp.com",
+    databaseURL: "https://project1-25f92.firebaseio.com",
+    projectId: "project1-25f92",
+    storageBucket: "project1-25f92.appspot.com",
+    messagingSenderId: "289958381373"
+  };
+  firebase.initializeApp(config);
+
 console.log("it works");
 
 //TheBeerSpot.com API key 7de5276cb58f68445b979e8499975c00
