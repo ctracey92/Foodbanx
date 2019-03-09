@@ -4,30 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Meal Manager</title>   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"/>
+    <title>Meal Manager</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+    />
   </head>
   <body>
-
-
-
-    <div class="test">
-      <h1>PUSH THIS TO MASTER</h1>
+    <div class="ui raised container segment">
+      <h1>HEADER</h1>
     </div>
 
+    <div class="ui raised container segment">
+      <form class="ui form">
+        <div class="field">
+          <label>Recipe Search</label>
+          <input id="foodInput" type="text" name="Food" placeholder="search" />
+        </div>
 
-
-    <form>
-        Food:<br>
-        <input id="foodInput" type="text" name="Food"><br>
-        <input id="submitBttn" type="submit" value="submit">
+        <button id="submitBttn" class="ui button" type="submit">Submit</button>
       </form>
+    </div>
 
-      <div id="display"></div>
+    <div class="ui raised container segment">
+      <h1>Meal search results go here</h1>
+    </div>
+
+    <div id="display"></div>
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
   </body>
 </html>
