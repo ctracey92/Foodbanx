@@ -16,7 +16,7 @@ console.log("it works");
 //APP Key = 11d67226f6f5e59a6706570b9578fece
 
 //https://sandbox-api.brewerydb.com/v2/ API key b77b0aed77b08ea4a53b9e27b3103a48
-  
+
 
 
 // Global Variables
@@ -26,7 +26,7 @@ var foodResponse;
 var beerResponse;
 var beerUrl = "http://api.brewerydb.com/v2//beer/random/?key=b77b0aed77b08ea4a53b9e27b3103a48";
 
-$("#submitBttn").on("click", function(event) {
+$("#submitBttn").on("click", function (event) {
   event.preventDefault();
   $("<h1>TEST</h1>").append("#card-box");
 
@@ -43,21 +43,21 @@ $("#submitBttn").on("click", function(event) {
   $.ajax({
     url: proxyURL + foodUrl,
     method: "GET"
-  }).then(function(response) {
+  }).then(function (response) {
     console.log(response);
 
-  $.ajax({
-    url: proxyURL + beerUrl,
-    method: "GET"
-  })
-  .then(function(resp){
-    console.log(resp)
-    var beerResponse = resp.data;
-  })
-           
+    $.ajax({
+      url: proxyURL + beerUrl,
+      method: "GET"
+    })
+      .then(function (resp) {
+        console.log(resp)
+        var beerResponse = resp.data;
+      })
 
-  
-    
+
+
+
     for (var i = 0; i < 4; i++) {
 
       //Response Variables
@@ -78,54 +78,90 @@ $("#submitBttn").on("click", function(event) {
       newImgDiv.addClass("image");
       // Create img
       var newImg = $("<img>");
-      newImg.attr("src" , imgSrc);
+      newImg.attr("src", imgSrc);
       // Place img in it's div
       newImgDiv.append(newImg);
+
       // Create content div
       var contentDiv = $("<div>");
       contentDiv.addClass("content");
+
       // Create header
       var headerDiv = $("<div>");
       headerDiv.addClass("header");
       headerDiv.text(recipeTitle);
+
       // Create meta div
       var metaDiv = $("<div>");
       metaDiv.addClass("meta");
-        var prepText = $("<a>");
-        prepText.text("Total Time: " + prepTime);
-        var portionSize = $("<a>");
-        portionSize.text("Portions: " + portion);
+      var prepText = $("<a>");
+      prepText.text("Total Time: " + prepTime);
+      var portionSize = $("<a>");
+      portionSize.text("Portions: " + portion);
       metaDiv.append(prepText, spacer, portionSize);
 
+      // Create ingredients div
       var ingredientsList = $("<div>");
       ingredientsList.addClass("description");
       ingredientsList.text("Ingredients: " + ingredients);
 
+      // Append all content data into content div
+      $(contentDiv).append(headerDiv, metaDiv, ingredientsList);
+
+
+
+      // Button Div
+      var extraContent = $("<div>");
+      extraContent.addClass("extra content");
+
+      // Link to recipe
       var link = $("<a>");
-      link.attr("href" , recipeLink);
+      link.attr("href", recipeLink);
       link.attr("target", "_blank")
-      link.text("Click Here for Recipe");
+      link.text("Go to recipe");
+
+      // Create spans
+      var btnSpanLeft = $("<span>");
+      btnSpanLeft.addClass("left floated");
+      var btnSpanRight = $("<span>");
+      btnSpanRight.addClass("right floated");
+
+      // Create buttons
+      var buttonLeft = $("<button>");
+      var buttonRight = $("<button>");
+      buttonRight.addClass("ui primary button");
+      buttonLeft.addClass("ui primary button");
+
+      // Button Data
+      buttonRight.append(link);
+      buttonLeft.text("Add to week");
+
+      // Append buttons to spans
+      btnSpanLeft.append(buttonLeft);
+      btnSpanRight.append(buttonRight);
+
+      // Append spans to extra content
+      $(extraContent).append(btnSpanLeft, btnSpanRight);
 
 
+
+      $(newCard).append(contentDiv);
       $(newCard).prepend(newImgDiv);
-      $(newCard).append(headerDiv);
-      $(newCard).append(metaDiv);
-      $(newCard).append(ingredientsList);
-      $(newCard).append(link);
+      $(newCard).append(extraContent);
       $("#card-box").append(newCard);
     }
   });
 });
 
 //write search to FireBase
-$("#submitBttn").on("click", function(){
+$("#submitBttn").on("click", function () {
 
   event.preventDefault();
   searchTerm = $("#foodInput").val().trim();
   function writeUserData(userId, name, email, imageUrl) {
     firebase.database().ref().set({
       Search: searchTerm,
-     
+
     });
   }
   writeUserData();
