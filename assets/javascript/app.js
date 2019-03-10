@@ -16,8 +16,12 @@ console.log("it works");
 //APP Key = 11d67226f6f5e59a6706570b9578fece
 
 //https://sandbox-api.brewerydb.com/v2/ API key b77b0aed77b08ea4a53b9e27b3103a48
+  
 
+
+// Global Variables
 var searchTerm;
+var database = firebase.database();
 var foodResponse;
 
 $("#submitBttn").on("click", function(event) {
@@ -39,7 +43,13 @@ $("#submitBttn").on("click", function(event) {
     method: "GET"
   }).then(function(response) {
     console.log(response);
-
+            var results = response.hits;
+            var imgSrc = results[i].recipe.image;
+            var recipeTitle = results[i].recipe.label;
+            var recipeLink = results[i].recipe.url;
+            var prepTime = results[i].recipe.totalTime;
+            var ingredients = results[i].recipe.ingredientLines;
+    
     for (var i = 0; i < 4; i++) {
       // Create card div
       var newCard = $("<div>");
@@ -68,5 +78,21 @@ $("#submitBttn").on("click", function(event) {
     }
   });
 });
+
+//write search to FireBase
+$("#submitBttn").on("click", function(){
+
+  event.preventDefault();
+  searchTerm = $("#foodInput").val().trim();
+  function writeUserData(userId, name, email, imageUrl) {
+    firebase.database().ref().set({
+      Search: searchTerm,
+     
+    });
+  }
+  writeUserData();
+})
+
+
 
 // var beerUrl = "http://api.brewerydb.com/v2//beer/random/?key=b77b0aed77b08ea4a53b9e27b3103a48";
