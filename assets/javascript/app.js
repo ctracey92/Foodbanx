@@ -29,7 +29,7 @@ var beerUrl = "http://api.brewerydb.com/v2//beer/random/?key=b77b0aed77b08ea4a53
 $("#submitBttn").on("click", function (event) {
   event.preventDefault();
 
-    searchTerm = $("#foodInput")
+  searchTerm = $("#foodInput")
     .val()
     .trim();
   console.log(searchTerm);
@@ -57,7 +57,7 @@ $("#submitBttn").on("click", function (event) {
 
 
 
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 9; i++) {
 
       //Response Variables
       var spacer = "&#124;"
