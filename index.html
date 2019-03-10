@@ -1,113 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Meal Manager</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
-    />
-  </head>
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <body>
-    <div id="header-box" class="ui raised container segment">
-      <h1>Meal Prepper App</h1>
-    </div>
 
-    <div id="search-box" class="ui raised container segment">
-      <form class="ui form">
-        <div class="field">
-          <label>Recipe Search</label>
-          <input id="foodInput" type="text" name="Food" placeholder="search" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Meal Manager</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
+</head>
+<link rel="stylesheet" href="assets/css/style.css" />
+
+<body>
+  <div id="header-box" class="ui raised container segment">
+    <h1>Meal Prepper App</h1>
+  </div>
+
+  <div id="search-box" class="ui raised container segment">
+    <form class="ui form">
+      <div class="field">
+        <label>Recipe Search</label>
+        <input id="foodInput" type="text" name="Food" placeholder="search" />
+      </div>
+
+      <button id="submitBttn" class="ui button" type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div class="ui raised container segment">
+    <h1>Meal search results go here</h1>
+
+    <div id="card-box" class="ui link cards">
+
+      <div class="card">
+        <div class="image">
+          <img
+            src="https://cdn-image.myrecipes.com/sites/default/files/styles/medium_2x/public/1527266075/How_to_Grill_Ribs135.jpg?itok=BXOjg9WM" />
         </div>
-
-        <button id="submitBttn" class="ui button" type="submit">Submit</button>
-      </form>
-    </div>
-
-    <div id="meals-box" class="ui raised container segment">
-      <h1>Meal search results go here</h1>
-
-      <div class="ui link cards">
-
-        <div class="card">
-          <div class="image">
-            <img
-              src="https://cdn-image.myrecipes.com/sites/default/files/styles/medium_2x/public/1527266075/How_to_Grill_Ribs135.jpg?itok=BXOjg9WM"
-            />
+        <div class="content">
+          <div class="header">Baby Back Ribs</div>
+          <div class="meta">
+            <a>Prep: 15min</a>
+            <a> &#124;</a>
+            <a>Cook Time: 45min</a>
           </div>
-          <div class="content">
-            <div class="header">Baby Back Ribs</div>
-            <div class="meta">
-              <a>Prep: 15min</a>
-              <a> &#124;</a>
-              <a>Cook Time: 45min</a>
-            </div>
-            <div class="description">
-              Recipe description
-            </div>
-          </div>
-          <div class="extra content">
-            <span class="left floated">
-              <button class="ui primary button">Add to week</button>
-            </span>
+          <div class="description">
+            Recipe description
           </div>
         </div>
-        <div class="card">
-          <div class="image">
-            <img
-              src="https://www.foodiewithfamily.com/wp-content/uploads/2017/02/Melting-Sweet-Potatoes-2.jpg"
-            />
+        <div class="extra content">
+          <span class="left floated">
+            <button class="ui primary button">Add to week</button>
+          </span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="image">
+          <img src="https://www.foodiewithfamily.com/wp-content/uploads/2017/02/Melting-Sweet-Potatoes-2.jpg" />
+        </div>
+        <div class="content">
+          <div class="header">Melting Sweet Potatoes</div>
+          <div class="meta">
+            <a>Prep: 10min</a>
+            <a> &#124;</a>
+            <a>Cook Time: 1hr</a>
           </div>
-          <div class="content">
-            <div class="header">Melting Sweet Potatoes</div>
-            <div class="meta">
-              <a>Prep: 10min</a>
-              <a> &#124;</a>
-              <a>Cook Time: 1hr</a>
-            </div>
-            <div class="description">
-              Recipe description
-            </div>
-          </div>
-          <div class="extra content">
-            <span class="left floated">
-              <button class="ui primary button">Add to week</button>
-            </span>
+          <div class="description">
+            Recipe description
           </div>
         </div>
-        <div class="card">
-          <div class="image">
-            <img
-              src="https://paleoleap.com/pictures/j-paleo/rosemay-ranch-chicken/rosemay-ranch-chicken-main.jpg"
-            />
+        <div class="extra content">
+          <span class="left floated">
+            <button class="ui primary button">Add to week</button>
+          </span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="image">
+          <img src="https://paleoleap.com/pictures/j-paleo/rosemay-ranch-chicken/rosemay-ranch-chicken-main.jpg" />
+        </div>
+        <div class="content">
+          <div class="header">Grilled Chicken Kabobs</div>
+          <div class="meta">
+            <a>Prep: 20min</a>
+            <a> &#124;</a>
+            <a>Cook Time: 35min</a>
           </div>
-          <div class="content">
-            <div class="header">Grilled Chicken Kabobs</div>
-            <div class="meta">
-              <a>Prep: 20min</a>
-              <a> &#124;</a>
-              <a>Cook Time: 35min</a>
-            </div>
-            <div class="description">
-              Recipe description
-            </div>
+          <div class="description">
+            Recipe description
           </div>
-          <div class="extra content">
-            <span class="left floated">
-              <button class="ui primary button">Add to week</button>
-            </span>
-          </div>
+        </div>
+        <div class="extra content">
+          <span class="left floated">
+            <button class="ui primary button">Add to week</button>
+          </span>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="assets/javascript/app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="assets/javascript/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
-  </body>
+</body>
+
 </html>
