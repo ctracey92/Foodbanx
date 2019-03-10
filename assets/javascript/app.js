@@ -43,14 +43,19 @@ $("#submitBttn").on("click", function(event) {
     method: "GET"
   }).then(function(response) {
     console.log(response);
-            var results = response.hits;
-            var imgSrc = results[i].recipe.image;
-            var recipeTitle = results[i].recipe.label;
-            var recipeLink = results[i].recipe.url;
-            var prepTime = results[i].recipe.totalTime;
-            var ingredients = results[i].recipe.ingredientLines;
+           
     
     for (var i = 0; i < 4; i++) {
+
+      //Response Variables
+      var spacer = "&#124;"
+      var results = response.hits;
+      var imgSrc = results[i].recipe.image;
+      var portion = results[i].recipe.yield;
+      var recipeTitle = results[i].recipe.label;
+      var recipeLink = results[i].recipe.url;
+      var prepTime = results[i].recipe.totalTime;
+      var ingredients = results[i].recipe.ingredientLines;
       // Create card div
       var newCard = $("<div>");
       // Assign class of card
@@ -60,6 +65,7 @@ $("#submitBttn").on("click", function(event) {
       newImgDiv.addClass("image");
       // Create img
       var newImg = $("<img>");
+      newImg.attr("src" , imgSrc);
       // Place img in it's div
       newImgDiv.append(newImg);
       // Create content div
@@ -68,12 +74,31 @@ $("#submitBttn").on("click", function(event) {
       // Create header
       var headerDiv = $("<div>");
       headerDiv.addClass("header");
+      headerDiv.text(recipeTitle);
       // Create meta div
       var metaDiv = $("<div>");
       metaDiv.addClass("meta");
+        var prepText = $("<a>");
+        prepText.text("Total Time: " + prepTime);
+        var portionSize = $("<a>");
+        portionSize.text("Portions: " + portion);
+      metaDiv.append(prepText, spacer, portionSize);
+
+      var ingredientsList = $("<div>");
+      ingredientsList.addClass("description");
+      ingredientsList.text("Ingredients: " + ingredients);
+
+      var link = $("<a>");
+      link.attr("href" , recipeLink);
+      link.attr("target", "_blank")
+      link.text("Click Here for Recipe");
+
+
       $(newCard).prepend(newImgDiv);
       $(newCard).append(headerDiv);
       $(newCard).append(metaDiv);
+      $(newCard).append(ingredientsList);
+      $(newCard).append(link);
       $("#card-box").append(newCard);
     }
   });
