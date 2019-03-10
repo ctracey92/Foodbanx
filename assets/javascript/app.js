@@ -23,6 +23,8 @@ console.log("it works");
 var searchTerm;
 var database = firebase.database();
 var foodResponse;
+var beerResponse;
+var beerUrl = "http://api.brewerydb.com/v2//beer/random/?key=b77b0aed77b08ea4a53b9e27b3103a48";
 
 $("#submitBttn").on("click", function(event) {
   event.preventDefault();
@@ -43,7 +45,18 @@ $("#submitBttn").on("click", function(event) {
     method: "GET"
   }).then(function(response) {
     console.log(response);
+
+  $.ajax({
+    url: proxyURL + beerUrl,
+    method: "GET"
+  })
+  .then(function(resp){
+    console.log(resp)
+    var beerResponse = resp.data;
+  })
            
+
+  
     
     for (var i = 0; i < 4; i++) {
 
@@ -120,4 +133,4 @@ $("#submitBttn").on("click", function(){
 
 
 
-// var beerUrl = "http://api.brewerydb.com/v2//beer/random/?key=b77b0aed77b08ea4a53b9e27b3103a48";
+
