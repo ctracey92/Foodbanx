@@ -29,7 +29,7 @@ var beerUrl = "http://api.brewerydb.com/v2//beer/random/?key=b77b0aed77b08ea4a53
 $("#submitBttn").on("click", function(event) {
   event.preventDefault();
 
-  $("#foodInput").val("search");
+  $("#foodInput").val("");
 
   searchTerm = $("#foodInput")
     .val()
