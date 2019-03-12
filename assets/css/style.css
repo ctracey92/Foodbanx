@@ -1,5 +1,18 @@
+/* SEMANTIC */
+.column {
+  background-color: rgb(207, 207, 207);
+}
+
 /* HEADER */
 
 #header-box {
   margin-top: 2rem;
+}
+
+/* DAYS OF THE WEEK */
+
+.weekday {
+  display: inline-block;
+  width: 18%;
+  background-color: 
 }
