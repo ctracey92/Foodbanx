@@ -55,6 +55,21 @@ $("#submitBttn").on("click", function (event) {
       .then(function (resp) {
         console.log(resp)
         var beerResponse = resp.data;
+        var beerStyle = beerResponse.style.name;
+        var beerDescription = beerResponse.style.description;
+
+        function beer (){
+          var beerDiv = $("<div>");
+          var bStyle = $("<p>");
+          bStyle.text(beerStyle);
+    
+          var bDescription= $("<p>");
+          bDescription.text(beerDescription);
+    
+          $(beerDiv).append(bStyle , bDescription);
+          $("#testingBeerDiv").append(beerDiv)
+        }
+        beer();
       })
 
 
@@ -152,6 +167,8 @@ $("#submitBttn").on("click", function (event) {
       $(newCard).append(extraContent);
       $("#card-box").append(newCard);
     }
+
+
   });
   $("#foodInput").val("");
 });
