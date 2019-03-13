@@ -183,6 +183,12 @@ function dataToFirebase(title, ingredients, link) {
   console.log(title);
   console.log(ingredients);
   console.log(link);
+
+  database.ref().push({
+    title: title,
+    ingredients: ingredients,
+    link: link
+    });
 }
 
 // Save selected cards to next box
@@ -198,7 +204,8 @@ $(document).on("click", ".btn-left", function () {
 
   obj = $(this).data();
 
-  cloneCard();
+  dataToFirebase();
+  
 
 });
 
