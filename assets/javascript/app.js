@@ -25,29 +25,73 @@ var foodResponse;
 var beerResponse;
 var beerUrl = "http://api.brewerydb.com/v2//beer/random/?key=b77b0aed77b08ea4a53b9e27b3103a48";
 
-var title; 
-var ingredients; 
-var link; 
+var title;
+var ingredients;
+var link;
+
+function cloneFromFirebase(title, ingredients, link, image) {
+  // Create card div
+  var clone = $("<div>");
+  // Assign class of card
+  clone.addClass("card").attr("data-link", link);
+  // Create image div
+  var cloneImgDiv = $("<div>");
+  cloneImgDiv.addClass("image");
+  // Create img
+  var cloneImg = $("<img>");
+  cloneImg.attr("src", image);
+  // Place img in it's div
+  cloneImgDiv.append(cloneImg);
+
+  // Create content div
+  var cloneContent = $("<div>");
+  cloneContent.addClass("content");
+
+  // Create header
+  var cloneHeaderDiv = $("<div>");
+  cloneHeaderDiv.addClass("header");
+  cloneHeaderDiv.text(title);
+  cloneContent.append(cloneHeaderDiv);
+
+  // Button Div
+  var cloneButtonDiv = $("<div>");
+  cloneButtonDiv.addClass("ui bottom attached button");
+
+  // Link to recipe
+  var link = $("<a>");
+  link.attr("href", link);
+  link.attr("target", "_blank")
+  link.text("Go to recipe");
+  cloneButtonDiv.append(link);
+
+  // Append elements to clone
+  $(clone).append(cloneImgDiv);
+  $(clone).append(cloneContent);
+  $(clone).append(cloneButtonDiv);
+
+  $(".recipe-row").append(clone);
+}
+
+//When a child is added run the following funciton
+database.ref().on("child_added", function (snapshot) {
+
+  //Console log the snapshot
+  console.log(snapshot);
+
+  //Assign the snapshot pieces to variables
+  title = snapshot.val().title;
+  ingredients = snapshot.val().ingredients;
+  link = snapshot.val().link;
+  image = snapshot.val().image;
+
+  console.log(title, ingredients, link);
+
+  cloneFromFirebase(title, ingredients, link, image);
 
 
-    //When a child is added run the following funciton
-    database.ref().on("child_added", function(snapshot){
-      
-      //Console log the snapshot
-      console.log(snapshot);
-
-      //Assign the snapshot pieces to variables
-      title = snapshot.val().title;
-      ingredients = snapshot.val().ingredients;
-      link = snapshot.val().link;
-      
-      console.log (title , ingredients , link);
-
-
-
-    }), function(errorObject){
-      console.log ("error")
-    }
+}), function (errorObject) {
+  console.log("error")
+}
 
 
 
@@ -199,21 +243,25 @@ $("#submitBttn").on("click", function (event) {
 });
 
 
-function dataToFirebase(title, ingredients, link) {
+function dataToFirebase(title, ingredients, link, image) {
   title = obj.recipeObj.recipe.label;
   ingredients = obj.recipeObj.recipe.ingredientLines;
   link = obj.recipeObj.recipe.url;
+  image = obj.recipeObj.recipe.image;
 
   console.log(title);
   console.log(ingredients);
   console.log(link);
+  console.log(image);
 
   database.ref().push({
     title: title,
     ingredients: ingredients,
-    link: link
-    });
+    link: link,
+    image: image
+  });
 }
+
 
 // Save selected cards to next box
 $(document).on("click", ".btn-left", function () {
@@ -229,24 +277,10 @@ $(document).on("click", ".btn-left", function () {
   obj = $(this).data();
 
   dataToFirebase();
-  
+
 
 });
 
-
-//write search to FireBase
-$("#submitBttn").on("click", function () {
-
-  event.preventDefault();
-  searchTerm = $("#foodInput").val().trim();
-  function writeUserData(userId, name, email, imageUrl) {
-    firebase.database().ref().set({
-      Search: searchTerm,
-
-    });
-  }
-  writeUserData();
-})
 
 
 
