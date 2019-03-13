@@ -85,6 +85,7 @@ $("#submitBttn").on("click", function (event) {
         var beerDescription = beerResponse.style.description;
 
         function beer() {
+          $("#testingBeerDiv").empty();
           var beerDiv = $("<div>");
           var bStyle = $("<p>");
           bStyle.text(beerStyle);
