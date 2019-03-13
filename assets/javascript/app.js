@@ -26,10 +26,10 @@ var foodResponse;
 var beerResponse;
 var beerUrl = "http://api.brewerydb.com/v2//beer/random/?key=b77b0aed77b08ea4a53b9e27b3103a48";
 
+// Submit serach term
 $("#submitBttn").on("click", function (event) {
   event.preventDefault();
 
-  //Clears the results container before printing the new data
   $("#card-box").empty();
 
   searchTerm = $("#foodInput")
@@ -55,18 +55,19 @@ $("#submitBttn").on("click", function (event) {
       .then(function (resp) {
         console.log(resp)
         var beerResponse = resp.data;
+
         var beerStyle = beerResponse.style.name;
         var beerDescription = beerResponse.style.description;
 
-        function beer (){
+        function beer() {
           var beerDiv = $("<div>");
           var bStyle = $("<p>");
           bStyle.text(beerStyle);
-    
-          var bDescription= $("<p>");
+
+          var bDescription = $("<p>");
           bDescription.text(beerDescription);
-    
-          $(beerDiv).append(bStyle , bDescription);
+
+          $(beerDiv).append(bStyle, bDescription);
           $("#testingBeerDiv").append(beerDiv)
         }
         beer();
@@ -89,7 +90,7 @@ $("#submitBttn").on("click", function (event) {
       // Create card div
       var newCard = $("<div>");
       // Assign class of card
-      newCard.addClass("card");
+      newCard.addClass("card").attr("data-link", recipeLink);
       // Create image div
       var newImgDiv = $("<div>");
       newImgDiv.addClass("image");
@@ -146,8 +147,8 @@ $("#submitBttn").on("click", function (event) {
       // Create buttons
       var buttonLeft = $("<button>");
       var buttonRight = $("<button>");
-      buttonRight.addClass("ui primary button");
-      buttonLeft.addClass("ui primary button");
+      buttonRight.addClass("ui primary button btn-right");
+      buttonLeft.addClass("ui primary button btn-left");
 
       // Button Data
       buttonRight.append(link);
@@ -167,11 +168,20 @@ $("#submitBttn").on("click", function (event) {
       $(newCard).append(extraContent);
       $("#card-box").append(newCard);
     }
-
-
   });
   $("#foodInput").val("");
 });
+
+// Save selected cards to next box
+$(document).on("click", ".btn-left", function () {
+  console.log("clicked");
+
+  var clone = $(this).parents(".card").clone();
+  clone.remove(".ui.primary.button.btn-left");
+  $(".recipe-row").append(clone);
+
+});
+
 
 //write search to FireBase
 $("#submitBttn").on("click", function () {
