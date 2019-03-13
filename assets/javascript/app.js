@@ -25,6 +25,30 @@ var foodResponse;
 var beerResponse;
 var beerUrl = "http://api.brewerydb.com/v2//beer/random/?key=b77b0aed77b08ea4a53b9e27b3103a48";
 
+var title; 
+var ingredients; 
+var link; 
+
+
+    //When a child is added run the following funciton
+    database.ref().on("child_added", function(snapshot){
+      
+      //Console log the snapshot
+      console.log(snapshot);
+
+      //Assign the snapshot pieces to variables
+      title = snapshot.val().title;
+      ingredients = snapshot.val().ingredients;
+      link = snapshot.val().link;
+      
+      console.log (title , ingredients , link);
+
+
+
+    }), function(errorObject){
+      console.log ("error")
+    }
+
 
 
 // Submit serach term
