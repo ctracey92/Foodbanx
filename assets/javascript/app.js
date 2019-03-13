@@ -235,20 +235,6 @@ $(document).on("click", ".btn-left", function () {
 });
 
 
-//write search to FireBase
-$("#submitBttn").on("click", function () {
-
-  event.preventDefault();
-  searchTerm = $("#foodInput").val().trim();
-  function writeUserData(userId, name, email, imageUrl) {
-    firebase.database().ref().set({
-      Search: searchTerm,
-
-    });
-  }
-  writeUserData();
-})
-
 
 
 
