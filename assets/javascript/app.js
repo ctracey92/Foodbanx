@@ -18,13 +18,14 @@ console.log("it works");
 //https://sandbox-api.brewerydb.com/v2/ API key b77b0aed77b08ea4a53b9e27b3103a48
 
 
-
 // Global Variables
 var searchTerm;
 var database = firebase.database();
 var foodResponse;
 var beerResponse;
 var beerUrl = "http://api.brewerydb.com/v2//beer/random/?key=b77b0aed77b08ea4a53b9e27b3103a48";
+
+
 
 // Submit serach term
 $("#submitBttn").on("click", function (event) {
@@ -149,6 +150,7 @@ $("#submitBttn").on("click", function (event) {
       var buttonRight = $("<button>");
       buttonRight.addClass("ui primary button btn-right");
       buttonLeft.addClass("ui primary button btn-left");
+      buttonLeft.data("recipeObj", results[i]);
 
       // Button Data
       buttonRight.append(link);
@@ -172,13 +174,31 @@ $("#submitBttn").on("click", function (event) {
   $("#foodInput").val("");
 });
 
+
+function dataToFirebase(title, ingredients, link) {
+  title = obj.recipeObj.recipe.label;
+  ingredients = obj.recipeObj.recipe.ingredientLines;
+  link = obj.recipeObj.recipe.url;
+
+  console.log(title);
+  console.log(ingredients);
+  console.log(link);
+}
+
 // Save selected cards to next box
 $(document).on("click", ".btn-left", function () {
-  console.log("clicked");
+  // -----------------------
+  // DOM PUSH
+  // console.log("clicked");
 
-  var clone = $(this).parents(".card").clone();
-  clone.remove(".ui.primary.button.btn-left");
-  $(".recipe-row").append(clone);
+  // var clone = $(this).parents(".card").clone();
+  // clone.remove(".ui.primary.button.btn-left");
+  // $(".recipe-row").append(clone);
+  // -----------------------
+
+  obj = $(this).data();
+
+  cloneCard();
 
 });
 
