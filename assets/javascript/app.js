@@ -72,7 +72,7 @@ $("#submitBttn").on("click", function (event) {
       // Create card div
       var newCard = $("<div>");
       // Assign class of card
-      newCard.addClass("card");
+      newCard.addClass("card").attr("data-link", recipeLink);
       // Create image div
       var newImgDiv = $("<div>");
       newImgDiv.addClass("image");
@@ -129,8 +129,8 @@ $("#submitBttn").on("click", function (event) {
       // Create buttons
       var buttonLeft = $("<button>");
       var buttonRight = $("<button>");
-      buttonRight.addClass("ui primary button").attr("id", "btn-right");
-      buttonLeft.addClass("ui primary button").attr("id", "btn-left");
+      buttonRight.addClass("ui primary button btn-right");
+      buttonLeft.addClass("ui primary button btn-left");
 
       // Button Data
       buttonRight.append(link);
@@ -155,7 +155,14 @@ $("#submitBttn").on("click", function (event) {
 });
 
 // Save selected cards to next box
+$(document).on("click", ".btn-left", function () {
+  console.log("clicked");
 
+  var clone = $(this).parents(".card").clone();
+  clone.remove(".ui.primary.button.btn-left");
+  $(".recipe-row").append(clone);
+
+});
 
 
 //write search to FireBase
