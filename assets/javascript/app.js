@@ -28,7 +28,7 @@ var beerUrl = "http://api.brewerydb.com/v2//beer/random/?key=b77b0aed77b08ea4a53
 
 
 $("#signIn").on("click", function (event) {
-  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -38,7 +38,7 @@ $("#signIn").on("click", function (event) {
 });
 
 $("#signUp").on("click", function (event) {
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -76,37 +76,50 @@ function cloneFromFirebase(title, ingredients, link, image) {
   cloneHeaderDiv.text(title);
   cloneContent.append(cloneHeaderDiv);
 
+  // Extra Content Div
+  var cloneExtraContent = $("<div>");
+  cloneExtraContent.addClass("extra content");
+
   // Button Div
   var cloneButtonDiv = $("<div>");
-  cloneButtonDiv.addClass("ui bottom attached button");
+  cloneButtonDiv.addClass("ui two buttons");
 
   // Link to recipe
+  var linkDiv = $("<div>");
+  linkDiv.addClass("ui basic green button")
   var link = $("<a>");
   link.attr("href", link);
   link.attr("target", "_blank")
   link.text("Go to recipe");
-  cloneButtonDiv.append(link);
+  linkDiv.append(link);
+
+  // Create Delete Btn
+  var deleteBtn = $("<div>");
+  deleteBtn.addClass("ui basic red button")
+  deleteBtn.text("Delete")
+  cloneButtonDiv.append(linkDiv, deleteBtn);
+  cloneExtraContent.append(cloneButtonDiv);
 
   // Append elements to clone
   $(clone).append(cloneImgDiv);
   $(clone).append(cloneContent);
-  $(clone).append(cloneButtonDiv);
+  $(clone).append(cloneExtraContent);
 
   $(".recipe-row").append(clone);
 
-  console.log(ingredients , "working");
-  
+  console.log(ingredients, "working");
+
   //For loop to print out each ingredient
-  for(var i = 0; i < ingredients.length; i++){
-    
+  for (var i = 0; i < ingredients.length; i++) {
+
     //Creates a variable list item
     var ingredientLi = ingredients[i];
 
-    console.log(ingredientLi , "working");
+    console.log(ingredientLi, "working");
     var listItem = $("<li>");
     //Sets the text of the list item to the ingredient 
     listItem.text(ingredientLi);
-    
+
     //Appends the variable to the div
     $("#ingredientsDiv").append(listItem);
   }
