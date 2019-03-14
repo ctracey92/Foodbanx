@@ -26,6 +26,27 @@ var foodResponse;
 var beerResponse;
 var beerUrl = "http://api.brewerydb.com/v2//beer/random/?key=b77b0aed77b08ea4a53b9e27b3103a48";
 
+
+$("#signIn").on("click", function (event) {
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorCode, errorMessage);
+    // ...
+  });
+});
+
+$("#signUp").on("click", function (event) {
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorCode, errorMessage);
+    // ...
+  });
+});
+
 $("#submitBttn").on("click", function (event) {
   event.preventDefault();
 
