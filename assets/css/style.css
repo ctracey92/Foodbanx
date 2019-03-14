@@ -3,8 +3,35 @@
   background-color: rgb(207, 207, 207);
 }
 
+/* GLOBAL */
+body {
+  background-color: #eeeeee;
+}
+
 /* HEADER */
+header {
+  background-color: #42b2fa;
+}
+
+#header-logo {
+  width: 20rem;
+  padding: 1rem;
+}
 
 #header-box {
   margin-top: 2rem;
+}
+
+
+/* FOOTER */
+
+footer {
+  background-color: rgb(252, 252, 252);
+  margin-top: 5rem;
+}
+
+#footer-logo {
+  height: 200px;
+  margin-left: 2rem;
+  margin-top: 1rem;
 }
