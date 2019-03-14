@@ -129,8 +129,7 @@ function cloneFromFirebase(title, ingredients, link, image) {
 //When a child is added run the following funciton
 database.ref().on("child_added", function (snapshot) {
 
-  //Console log the snapshot
-  console.log(snapshot);
+
 
   //Assign the snapshot pieces to variables
   title = snapshot.val().title;
@@ -138,7 +137,7 @@ database.ref().on("child_added", function (snapshot) {
   link = snapshot.val().link;
   image = snapshot.val().image;
 
-  console.log(title, ingredients, link);
+  console.log(link);
 
   cloneFromFirebase(title, ingredients, link, image);
 
