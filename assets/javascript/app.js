@@ -87,11 +87,11 @@ function cloneFromFirebase(title, ingredients, link, image) {
   // Link to recipe
   var linkDiv = $("<div>");
   linkDiv.addClass("ui basic green button")
-  var link = $("<a>");
-  link.attr("href", link);
-  link.attr("target", "_blank")
-  link.text("Go to recipe");
-  linkDiv.append(link);
+  var linkTag = $("<a>");
+  linkTag.attr("href", link);
+  linkTag.attr("target", "_blank")
+  linkTag.text("Go to recipe");
+  linkDiv.append(linkTag);
 
   // Create Delete Btn
   var deleteBtn = $("<div>");
