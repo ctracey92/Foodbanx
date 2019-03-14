@@ -18,13 +18,13 @@ console.log("it works");
 //https://sandbox-api.brewerydb.com/v2/ API key b77b0aed77b08ea4a53b9e27b3103a48
 
 
-
 // Global Variables
 var searchTerm;
 var database = firebase.database();
 var foodResponse;
 var beerResponse;
 var beerUrl = "http://api.brewerydb.com/v2//beer/random/?key=b77b0aed77b08ea4a53b9e27b3103a48";
+
 
 
 $("#signIn").on("click", function (event) {
@@ -47,10 +47,99 @@ $("#signUp").on("click", function (event) {
   });
 });
 
+
+var title;
+var ingredients;
+var link;
+
+function cloneFromFirebase(title, ingredients, link, image) {
+  // Create card div
+  var clone = $("<div>");
+  // Assign class of card
+  clone.addClass("card").attr("data-link", link);
+  // Create image div
+  var cloneImgDiv = $("<div>");
+  cloneImgDiv.addClass("image");
+  // Create img
+  var cloneImg = $("<img>");
+  cloneImg.attr("src", image);
+  // Place img in it's div
+  cloneImgDiv.append(cloneImg);
+
+  // Create content div
+  var cloneContent = $("<div>");
+  cloneContent.addClass("content");
+
+  // Create header
+  var cloneHeaderDiv = $("<div>");
+  cloneHeaderDiv.addClass("header");
+  cloneHeaderDiv.text(title);
+  cloneContent.append(cloneHeaderDiv);
+
+  // Button Div
+  var cloneButtonDiv = $("<div>");
+  cloneButtonDiv.addClass("ui bottom attached button");
+
+  // Link to recipe
+  var link = $("<a>");
+  link.attr("href", link);
+  link.attr("target", "_blank")
+  link.text("Go to recipe");
+  cloneButtonDiv.append(link);
+
+  // Append elements to clone
+  $(clone).append(cloneImgDiv);
+  $(clone).append(cloneContent);
+  $(clone).append(cloneButtonDiv);
+
+  $(".recipe-row").append(clone);
+
+  console.log(ingredients , "working");
+  
+  //For loop to print out each ingredient
+  for(var i = 0; i < ingredients.length; i++){
+    
+    //Creates a variable list item
+    var ingredientLi = ingredients[i];
+
+    console.log(ingredientLi , "working");
+    var listItem = $("<li>");
+    //Sets the text of the list item to the ingredient 
+    listItem.text(ingredientLi);
+    
+    //Appends the variable to the div
+    $("#ingredientsDiv").append(listItem);
+  }
+
+}
+
+//When a child is added run the following funciton
+database.ref().on("child_added", function (snapshot) {
+
+  //Console log the snapshot
+  console.log(snapshot);
+
+  //Assign the snapshot pieces to variables
+  title = snapshot.val().title;
+  ingredients = snapshot.val().ingredients;
+  link = snapshot.val().link;
+  image = snapshot.val().image;
+
+  console.log(title, ingredients, link);
+
+  cloneFromFirebase(title, ingredients, link, image);
+
+
+}), function (errorObject) {
+  console.log("error")
+}
+
+
+
+// Submit serach term
 $("#submitBttn").on("click", function (event) {
   event.preventDefault();
 
-  //Clears the results container before printing the new data
   $("#card-box").empty();
 
   searchTerm = $("#foodInput")
@@ -76,18 +165,19 @@ $("#submitBttn").on("click", function (event) {
       .then(function (resp) {
         console.log(resp)
         var beerResponse = resp.data;
+
         var beerStyle = beerResponse.style.name;
         var beerDescription = beerResponse.style.description;
 
-        function beer (){
+        function beer() {
           var beerDiv = $("<div>");
           var bStyle = $("<p>");
           bStyle.text(beerStyle);
-    
-          var bDescription= $("<p>");
+
+          var bDescription = $("<p>");
           bDescription.text(beerDescription);
-    
-          $(beerDiv).append(bStyle , bDescription);
+
+          $(beerDiv).append(bStyle, bDescription);
           $("#testingBeerDiv").append(beerDiv)
         }
         beer();
@@ -110,7 +200,7 @@ $("#submitBttn").on("click", function (event) {
       // Create card div
       var newCard = $("<div>");
       // Assign class of card
-      newCard.addClass("card");
+      newCard.addClass("card").attr("data-link", recipeLink);
       // Create image div
       var newImgDiv = $("<div>");
       newImgDiv.addClass("image");
@@ -167,8 +257,9 @@ $("#submitBttn").on("click", function (event) {
       // Create buttons
       var buttonLeft = $("<button>");
       var buttonRight = $("<button>");
-      buttonRight.addClass("ui primary button");
-      buttonLeft.addClass("ui primary button");
+      buttonRight.addClass("ui primary button btn-right");
+      buttonLeft.addClass("ui primary button btn-left");
+      buttonLeft.data("recipeObj", results[i]);
 
       // Button Data
       buttonRight.append(link);
@@ -188,25 +279,49 @@ $("#submitBttn").on("click", function (event) {
       $(newCard).append(extraContent);
       $("#card-box").append(newCard);
     }
-
-
   });
   $("#foodInput").val("");
 });
 
-//write search to FireBase
-$("#submitBttn").on("click", function () {
 
-  event.preventDefault();
-  searchTerm = $("#foodInput").val().trim();
-  function writeUserData(userId, name, email, imageUrl) {
-    firebase.database().ref().set({
-      Search: searchTerm,
+function dataToFirebase(title, ingredients, link, image) {
+  title = obj.recipeObj.recipe.label;
+  ingredients = obj.recipeObj.recipe.ingredientLines;
+  link = obj.recipeObj.recipe.url;
+  image = obj.recipeObj.recipe.image;
 
-    });
-  }
-  writeUserData();
-})
+  console.log(title);
+  console.log(ingredients);
+  console.log(link);
+  console.log(image);
+
+  database.ref().push({
+    title: title,
+    ingredients: ingredients,
+    link: link,
+    image: image
+  });
+}
+
+
+// Save selected cards to next box
+$(document).on("click", ".btn-left", function () {
+  // -----------------------
+  // DOM PUSH
+  // console.log("clicked");
+
+  // var clone = $(this).parents(".card").clone();
+  // clone.remove(".ui.primary.button.btn-left");
+  // $(".recipe-row").append(clone);
+  // -----------------------
+
+  obj = $(this).data();
+
+  dataToFirebase();
+
+
+});
+
 
 
 

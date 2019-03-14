@@ -11,12 +11,12 @@
 <link rel="stylesheet" href="assets/css/style.css" />
 
 <body>
-  <div id="header-box" class="ui raised container segment menu">
-    <h1>Meal Prepper App</h1>
-    <div class="right menu">
-      
-    </div>
-  </div>
+
+
+  <header>
+    <img id="header-logo" src="assets/images/Foodbanx_logo_2.png" alt="Text Logo">
+  </header>
+  
   <div id="search-box" class="ui raised container segment">
       <form class="ui form">
         <div class="field">
@@ -30,7 +30,7 @@
         <button id="signUp" class="ui button" type="submit">SignUp</button>
       </form>
     </div>
-  
+
   <div id="search-box" class="ui raised container segment">
     <form class="ui form">
       <div class="field">
@@ -44,6 +44,7 @@
 
   <div class="ui raised container segment">
     <h1>Recipes</h1>
+
 
     <div id="card-box" class="ui link cards">
 
@@ -82,21 +83,26 @@
       <h1>Your Week</h1>
       <!-- Selected meals go here -->
 
-      <div class="ui grid">
-        <div class="five column row">
-          <div class="column">Monday</div>
-          <div class="column">Tuesday</div>
-          <div class="column">Wednesday</div>
-          <div class="column">Thursday</div>
-          <div class="column">Friday</div>
-        </div>
+      <div class="ui link cards recipe-row">
+
       </div>
     </div>
   </div>
+  </div>
+  <div class="ui raised container segment">
+    <h2>Ingredients (Grocery List):</h2>
+    <ul id="ingredientsDiv">
+    </ul>
+  </div>
 
   <div class="ui raised container segment">
+    <h2>Beer Pairing</h2>
     <div id="testingBeerDiv"></div>
   </div>
+
+  <footer>
+    <img id="footer-logo" src="assets/images/FoodbanxLogo.png" alt="Logo">
+  </footer>
 
 
   <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
