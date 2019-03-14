@@ -70,6 +70,24 @@ function cloneFromFirebase(title, ingredients, link, image) {
   $(clone).append(cloneButtonDiv);
 
   $(".recipe-row").append(clone);
+
+  console.log(ingredients , "working");
+  
+  //For loop to print out each ingredient
+  for(var i = 0; i < ingredients.length; i++){
+    
+    //Creates a variable list item
+    var ingredientLi = ingredients[i];
+
+    console.log(ingredientLi , "working");
+    var listItem = $("<li>");
+    //Sets the text of the list item to the ingredient 
+    listItem.text(ingredientLi);
+    
+    //Appends the variable to the div
+    $("#ingredientsDiv").append(listItem);
+  }
+
 }
 
 //When a child is added run the following funciton
