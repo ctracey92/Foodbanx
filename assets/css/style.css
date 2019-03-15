@@ -57,6 +57,15 @@ header {
   color: #FFF!important; 
 }
 
+.btn-left, .btn-right {
+  background-color: #351431!important;
+  transition: .4s;
+}
+
+.btn-left:hover, .btn-right:hover {
+  background-color: #7c2b73!important;
+}
+
 .btn-right a {
   color: #FFF!important;
 }
@@ -80,7 +89,7 @@ header {
 /* FOOTER */
 
 footer {
-  background-color: rgb(252, 252, 252);
+  background-color: #948D9B;
   margin-top: 5rem;
 }
 
