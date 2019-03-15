@@ -5,10 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Meal Manager</title>
+  <title>Foodbanx</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+
 </head>
-<link rel="stylesheet" href="assets/css/style.css" />
+
 
 <body>
 
@@ -31,68 +34,84 @@
       </form>
     </div> -->
 
-  <div id="search-box" class="ui raised container segment">
-    <form class="ui form">
-      <div class="field">
-        <label>Recipe Search</label>
-        <input id="foodInput" type="text" name="Food" placeholder="search" />
-      </div>
-
-      <button id="submitBttn" class="ui button" type="submit">Submit</button>
-    </form>
-  </div>
-
-  <div class="ui raised container segment">
-    <h1>Recipes</h1>
-
-
-    <div id="card-box" class="ui link cards">
-
-      <!-- Search results go here -->
-
-      <!-- <div class="card">
-        <div class="image">
-          <img src="https://paleoleap.com/pictures/j-paleo/rosemay-ranch-chicken/rosemay-ranch-chicken-main.jpg" />
-        </div>
-        <div class="content">
-          <div class="header">Grilled Chicken Kabobs</div>
-          <div class="meta">
-            <a>Prep: 20min</a>
-            <a> &#124;</a>
-            <a>Cook Time: 35min</a>
-          </div>
-          <div class="description">
-            Recipe description
-          </div>
-        </div>
-        <div class="extra content">
-          <span class="left floated">
-            <button class="ui primary button">Add to week</button>
-          </span>
-          <span class="right floated">
-            <button class="ui primary button">Go to recipe</button>
-          </span>
-        </div>
-      </div> -->
+  <div id="search-box" class="ui raised container segments">
+    <div class="ui segment segment-top">
+      <h3>Recipe Search</h3>
     </div>
+    <div class="ui segment">
+      <form class="ui form">
+        <div class="field">
+          <input id="foodInput" type="text" name="Food" placeholder="search" />
+        </div>
+
+        <button id="submitBttn" class="ui button" type="submit">Submit</button>
+      </form>
+    </div>
+
   </div>
 
+  <div class="ui raised container segments">
+    <div class="ui segment segment-top">
+      <h3>Recipe Results</h3>
+    </div>
 
-  <div class="ui raised container segment">
-    <div id="week-box">
-      <h1>Your Week</h1>
-      <!-- Selected meals go here -->
+    <div class="ui segment">
+      <div id="card-box" class="ui link cards">
 
-      <div class="ui link cards recipe-row">
+        <!-- Search results go here -->
 
+        <!-- <div class="card">
+              <div class="image">
+                <img src="https://paleoleap.com/pictures/j-paleo/rosemay-ranch-chicken/rosemay-ranch-chicken-main.jpg" />
+              </div>
+              <div class="content">
+                <div class="header">Grilled Chicken Kabobs</div>
+                <div class="meta">
+                  <a>Prep: 20min</a>
+                  <a> &#124;</a>
+                  <a>Cook Time: 35min</a>
+                </div>
+                <div class="description">
+                  Recipe description
+                </div>
+              </div>
+              <div class="extra content">
+                <span class="left floated">
+                  <button class="ui primary button">Add to week</button>
+                </span>
+                <span class="right floated">
+                  <button class="ui primary button">Go to recipe</button>
+                </span>
+              </div>
+            </div> -->
       </div>
     </div>
   </div>
+
+
+  <div class="ui raised container segments">
+    <div class="ui segment segment-top">
+      <h3>Your Week</h3>
+    </div>
+    <div class="ui segment">
+      <div id="week-box">
+        <!-- Selected meals go here -->
+
+        <div class="ui link cards recipe-row">
+
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="ui raised container segment">
-    <h2>Ingredients (Grocery List):</h2>
-    <ul id="ingredientsDiv">
-    </ul>
+  <div class="ui raised container segments">
+    <div class="ui segment segment-top">
+      <h3>Your Shopping List</h3>
+    </div>
+    <div class="ui segment">
+      <ul id="ingredientsDiv">
+      </ul>
+    </div>
+
   </div>
 
   <div class="ui raised container segment">

@@ -1,16 +1,27 @@
+/* COLOR SCHEME
+main-blue: #42B2FA;
+gray: #EDEDED;
+red: #FF5964;
+darker-gray: #948D9B
+purple: #351431;
+*/
+
 /* SEMANTIC */
 .column {
   background-color: rgb(207, 207, 207);
 }
 
+.segment-top {
+  background-color: #EDEDED!important;
+}
 /* GLOBAL */
 body {
-  background-color: #eeeeee;
+  background-color: #FFFFFF;
 }
 
 /* HEADER */
 header {
-  background-color: #42b2fa;
+  background-color: #42B2FA;
 }
 
 #header-logo {
@@ -22,11 +33,63 @@ header {
   margin-top: 2rem;
 }
 
+/* CARDS */
 
+.ui.card, .ui.cards>.card {
+  color: #FFFFFF;
+  width: 32%;
+}
+
+/* Card Content */
+.ui.card>.content, .ui.cards>.card>.content {
+  background: #42B2FA;
+}
+
+.header {
+  color: #FFF!important;
+}
+
+.meta a, .meta .spacer {
+  color: #FFF!important;
+}
+
+.description {
+  color: #FFF!important; 
+}
+
+.btn-left, .btn-right {
+  background-color: #351431!important;
+  transition: .4s;
+}
+
+.btn-left:hover, .btn-right:hover {
+  background-color: #7c2b73!important;
+}
+
+.btn-right a {
+  color: #FFF!important;
+}
+
+.ui.card > .extra, .ui.cards > .card > .extra {
+  border-top: 2px solid rgba(237, 237, 237, 0.5)!important;
+}
+
+.ui.basic.green.button{
+  background: rgba(85, 255, 85, 0.473)!important;
+}
+.ui.cards>.card>.content a:not(.ui) {
+  color: #FFF;
+}
+
+
+.ui.basic.red.button {
+  color: #FFF!important;
+  background-color: rgba(255, 89, 100, 0.562)!important;
+}
 /* FOOTER */
 
 footer {
-  background-color: rgb(252, 252, 252);
+  background-color: #948D9B;
   margin-top: 5rem;
 }
 
