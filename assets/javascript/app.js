@@ -203,7 +203,7 @@ $("#submitBttn").on("click", function (event) {
     for (var i = 0; i < 9; i++) {
 
       //Response Variables
-      var spacer = "&#124;"
+      var spacer = "&#124;" + "&nbsp";
       var results = response.hits;
       var imgSrc = results[i].recipe.image;
       var portion = results[i].recipe.yield;
