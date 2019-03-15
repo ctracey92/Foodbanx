@@ -121,6 +121,7 @@ function cloneFromFirebase(title, ingredients, link, image, key) {
 
     console.log(ingredientLi, "working");
     var listItem = $("<li>");
+    listItem.addClass(key)
     //Sets the text of the list item to the ingredient 
     listItem.text(ingredientLi);
 
@@ -136,11 +137,14 @@ $(document).on("click", "#delete", function(){
   firebase.database().ref().child(keyId).remove();
   console.log("working");
   $(this).parents(".card").remove();
+  $('li.' + keyId).remove();
+  //console.log("working");
 
 } )
 
 //On delete of child run function
 database.ref().on("child_removed", function (snapshot) {
+
 
   }), function (errorObject) {
   console.log("error")
