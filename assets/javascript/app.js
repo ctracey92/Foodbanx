@@ -95,8 +95,8 @@ function cloneFromFirebase(title, ingredients, link, image, key) {
 
   // Create Delete Btn
   var deleteBtn = $("<div>");
-  deleteBtn.attr("dataKey" , "snapshot.key");
-  deleteBtn.attr("id" , "delete")
+  deleteBtn.attr("dataKey", "snapshot.key");
+  deleteBtn.attr("id", "delete")
 
   deleteBtn.addClass("ui basic red button");
   deleteBtn.text("Delete");
@@ -132,7 +132,7 @@ function cloneFromFirebase(title, ingredients, link, image, key) {
 }
 
 //On click of delete btn remove the piece from firebase and the DOM
-$(document).on("click", "#delete", function(){
+$(document).on("click", "#delete", function () {
   var keyId = ($(this).attr("data-key"));
   firebase.database().ref().child(keyId).remove();
   console.log("working");
@@ -140,13 +140,13 @@ $(document).on("click", "#delete", function(){
   $('li.' + keyId).remove();
   //console.log("working");
 
-} )
+})
 
 //On delete of child run function
 database.ref().on("child_removed", function (snapshot) {
 
 
-  }), function (errorObject) {
+}), function (errorObject) {
   console.log("error")
 }
 
@@ -191,7 +191,8 @@ $("#submitBttn").on("click", function (event) {
   var proxyURL = "https://cors-anywhere.herokuapp.com/";
   console.log(foodUrl);
   $.ajax({
-    url: proxyURL + foodUrl,
+    // url: proxyURL + foodUrl,
+    url: foodUrl,
     method: "GET"
   }).then(function (response) {
     console.log(response);

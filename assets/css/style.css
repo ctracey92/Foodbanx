@@ -12,11 +12,31 @@ purple: #351431;
 }
 
 .segment-top {
-  background-color: #EDEDED!important;
+  background-color: #42B2FA!important;
+  color: #FFF;
+}
+
+.segment-top h3 {
+  font-size: 2rem;
+}
+
+.ui .button {
+  background-color: #351431;
+  color: #FFF;
+  transition: all .4s;
+}
+
+.ui .button:hover {
+  background-color: #914788;
+  color: #FFF;
 }
 /* GLOBAL */
 body {
-  background-color: #FFFFFF;
+  background-color: rgba(20, 68, 99, 0.486);
+  background-image: url("https://images.unsplash.com/photo-1495195134817-aeb325a55b65?ixlib=rb-1.2.1&auto=format&fit=crop&w=2255&q=80");
+  background-size: cover;
+  background-blend-mode: darken;
+  background-attachment: fixed;
 }
 
 /* HEADER */
@@ -27,6 +47,7 @@ header {
 #header-logo {
   width: 20rem;
   padding: 1rem;
+  margin-left: 20rem;
 }
 
 #header-box {
@@ -42,19 +63,22 @@ header {
 
 /* Card Content */
 .ui.card>.content, .ui.cards>.card>.content {
-  background: #42B2FA;
+  background: #EDEDED;
+  color: #351431;
 }
 
 .header {
-  color: #FFF!important;
+  color: #351431!important;
+  font-size: 1.5rem!important;
+  padding-bottom: 1rem;
 }
 
-.meta a, .meta .spacer {
-  color: #FFF!important;
+.meta a {
+  color: #351431!important;
 }
 
 .description {
-  color: #FFF!important; 
+  color: #42B2FA!important; 
 }
 
 .btn-left, .btn-right {
@@ -86,6 +110,19 @@ header {
   color: #FFF!important;
   background-color: rgba(255, 89, 100, 0.562)!important;
 }
+
+/* LIST */
+#ingredientsDiv li {
+  font-size: 1.4rem;
+  line-height: 40px;
+}
+
+/* BEER DIV */
+#testingBeerDiv p {
+  font-size: 1.2rem;
+  padding: 0 2rem;
+}
+
 /* FOOTER */
 
 footer {
