@@ -95,6 +95,9 @@ function cloneFromFirebase(title, ingredients, link, image) {
 
   // Create Delete Btn
   var deleteBtn = $("<div>");
+  deleteBtn.attr("dataKey" , "snapshot.key")
+
+
   deleteBtn.addClass("ui basic red button")
   deleteBtn.text("Delete")
   cloneButtonDiv.append(linkDiv, deleteBtn);
