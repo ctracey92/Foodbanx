@@ -127,10 +127,36 @@ header {
 
 footer {
   background-color: #948D9B;
-  margin-top: 5rem;
 }
 
+.copyright {
+  display: inline-block;
+}
+
+.contributors {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.ui.list>.item .header {
+  margin-left: -10px; 
+  padding: 1rem;
+}
+
+.ui.list>.item{
+  padding: 0 1rem;
+}
+
+.ui.list>.item>img.image {
+  display: block;
+}
+
+.ui.avatar.image {
+  height: 5rem;
+  width: auto;
+}
 #footer-logo {
+  display: inline-block;
   height: 200px;
   margin-left: 2rem;
   margin-top: 1rem;
