@@ -1,16 +1,27 @@
+/* COLOR SCHEME
+main-blue: #42B2FA;
+gray: #EDEDED;
+red: #FF5964;
+darker-gray: #948D9B
+purple: #351431;
+*/
+
 /* SEMANTIC */
 .column {
   background-color: rgb(207, 207, 207);
 }
 
+.segment-top {
+  background-color: #EDEDED!important;
+}
 /* GLOBAL */
 body {
-  background-color: #eeeeee;
+  background-color: #FFFFFF;
 }
 
 /* HEADER */
 header {
-  background-color: #42b2fa;
+  background-color: #42B2FA;
 }
 
 #header-logo {
@@ -22,6 +33,11 @@ header {
   margin-top: 2rem;
 }
 
+/* CARDS */
+
+.ui.card, .ui.cards>.card {
+  background: #42B2FA;
+}
 
 /* FOOTER */
 
