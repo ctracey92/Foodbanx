@@ -138,6 +138,7 @@ $(document).on("click", "#delete", function(){
   console.log("working");
   $(this).parents(".card").remove();
   $('li.' + keyId).remove();
+  //console.log("working");
 
 } )
 
