@@ -86,20 +86,20 @@ function cloneFromFirebase(title, ingredients, link, image, key) {
 
   // Link to recipe
   var linkDiv = $("<div>");
-  linkDiv.addClass("ui basic green button")
+  linkDiv.addClass("ui basic green button");
   var linkTag = $("<a>");
   linkTag.attr("href", link);
-  linkTag.attr("target", "_blank")
+  linkTag.attr("target", "_blank");
   linkTag.text("Go to recipe");
   linkDiv.append(linkTag);
 
   // Create Delete Btn
   var deleteBtn = $("<div>");
-  deleteBtn.attr("dataKey" , "snapshot.key")
+  deleteBtn.attr("dataKey" , "snapshot.key");
+  deleteBtn.attr("id" , "delete")
 
-
-  deleteBtn.addClass("ui basic red button")
-  deleteBtn.text("Delete")
+  deleteBtn.addClass("ui basic red button");
+  deleteBtn.text("Delete");
   deleteBtn.attr("data-key", key);
   cloneButtonDiv.append(linkDiv, deleteBtn);
   cloneExtraContent.append(cloneButtonDiv);
@@ -130,10 +130,25 @@ function cloneFromFirebase(title, ingredients, link, image, key) {
 
 }
 
+//On click of delete btn remove the piece from firebase and the DOM
+$(document).on("click", "#delete", function(){
+  var keyId = ($(this).attr("data-key"));
+  firebase.database().ref().child(keyId).remove();
+  console.log("working");
+  $(this).parents(".card").remove();
+
+} )
+
+//On delete of child run function
+database.ref().on("child_removed", function (snapshot) {
+
+  }), function (errorObject) {
+  console.log("error")
+}
+
+
 //When a child is added run the following funciton
 database.ref().on("child_added", function (snapshot) {
-
-
 
   //Assign the snapshot pieces to variables
   title = snapshot.val().title;
@@ -150,6 +165,8 @@ database.ref().on("child_added", function (snapshot) {
 }), function (errorObject) {
   console.log("error")
 }
+
+
 
 
 
@@ -318,7 +335,12 @@ function dataToFirebase(title, ingredients, link, image) {
     link: link,
     image: image
   });
+
+
 }
+
+
+
 
 
 // Save selected cards to next box
