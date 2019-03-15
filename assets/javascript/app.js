@@ -52,7 +52,7 @@ var title;
 var ingredients;
 var link;
 
-function cloneFromFirebase(title, ingredients, link, image) {
+function cloneFromFirebase(title, ingredients, link, image, key) {
   // Create card div
   var clone = $("<div>");
   // Assign class of card
@@ -87,11 +87,11 @@ function cloneFromFirebase(title, ingredients, link, image) {
   // Link to recipe
   var linkDiv = $("<div>");
   linkDiv.addClass("ui basic green button")
-  var link = $("<a>");
-  link.attr("href", link);
-  link.attr("target", "_blank")
-  link.text("Go to recipe");
-  linkDiv.append(link);
+  var linkTag = $("<a>");
+  linkTag.attr("href", link);
+  linkTag.attr("target", "_blank")
+  linkTag.text("Go to recipe");
+  linkDiv.append(linkTag);
 
   // Create Delete Btn
   var deleteBtn = $("<div>");
@@ -100,6 +100,7 @@ function cloneFromFirebase(title, ingredients, link, image) {
 
   deleteBtn.addClass("ui basic red button")
   deleteBtn.text("Delete")
+  deleteBtn.attr("data-key", key);
   cloneButtonDiv.append(linkDiv, deleteBtn);
   cloneExtraContent.append(cloneButtonDiv);
 
@@ -139,10 +140,11 @@ database.ref().on("child_added", function (snapshot) {
   ingredients = snapshot.val().ingredients;
   link = snapshot.val().link;
   image = snapshot.val().image;
+  key = snapshot.key;
 
   console.log(link);
 
-  cloneFromFirebase(title, ingredients, link, image);
+  cloneFromFirebase(title, ingredients, link, image, key);
 
 
 }), function (errorObject) {
