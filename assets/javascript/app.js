@@ -202,6 +202,7 @@ $("#submitBttn").on("click", function (event) {
       method: "GET"
     })
       .then(function (resp) {
+        console.log("beer")
         console.log(resp)
         var beerResponse = resp.data;
 
