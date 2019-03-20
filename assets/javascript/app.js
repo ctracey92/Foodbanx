@@ -1,11 +1,11 @@
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyAuT5dcM5ONqs-s91Q7WoDPh251EGdAxGU",
-  authDomain: "project1-25f92.firebaseapp.com",
-  databaseURL: "https://project1-25f92.firebaseio.com",
-  projectId: "project1-25f92",
-  storageBucket: "project1-25f92.appspot.com",
-  messagingSenderId: "289958381373"
+  apiKey: "AIzaSyCE2azoa_LYYPlOky15KYngz9t-PCNQrR4",
+  authDomain: "foodbanx.firebaseapp.com",
+  databaseURL: "https://foodbanx.firebaseio.com",
+  projectId: "foodbanx",
+  storageBucket: "",
+  messagingSenderId: "788134573197"
 };
 firebase.initializeApp(config);
 
