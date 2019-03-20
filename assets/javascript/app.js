@@ -223,9 +223,6 @@ $("#submitBttn").on("click", function (event) {
         beer();
       })
 
-
-
-
     for (var i = 0; i < 9; i++) {
 
       //Response Variables
@@ -368,6 +365,10 @@ $(document).on("click", ".btn-left", function () {
 });
 
 
+
+$("#week-box").on("click", function () {
+  $(".placeholder-box-text").fadeOut(1000);
+})
 
 
 

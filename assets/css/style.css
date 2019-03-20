@@ -39,6 +39,11 @@ body {
   background-attachment: fixed;
 }
 
+.placeholder-box-text {
+  padding: 2rem;
+}
+
+
 /* HEADER */
 header {
   background-color: #42B2FA;
@@ -110,6 +115,7 @@ header {
   color: #FFF!important;
   background-color: rgba(255, 89, 100, 0.562)!important;
 }
+
 
 /* LIST */
 #ingredientsDiv li {
