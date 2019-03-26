@@ -4,7 +4,7 @@ Student Contributors
 @ctracey92 @bshurts93 @rcarver515 @ronaldtbare
 
 * Technology
- CSS3, HTML5, Javascript, jQuery, Semantic UI, Firebase
+ CSS3, HTML5, Javascript, jQuery, Semantic UI, Firebase, APIs (Edamam,BreweryDB)
 
 * Target Audience: 
 - Meal preppers
@@ -30,6 +30,11 @@ Student Contributors
 
 * About
 A meal search engine that allows you to save recipes for future use and create a grocery list out of the ingredients needed for the saved recipes.
+
+* Approach
+    - We began by identifying and testing the possible API's as that was going to be the crux of our project.
+    - Once we found the API's and got them working, we linked in Firebase (to save results), and created a basic HTML format so we could work on dynamically having the JSON responses display to the page using Jquery.
+    - Finally we added in the Semantic UI classes/id's to format/style the page.
 
 
 * Contributing Guidelines

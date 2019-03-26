@@ -1,0 +1,45 @@
+Project Name: Meal Management 
+Team Members: Travis, Cody, Ben, Rob.
+Project Description: a food based search engine, that takes input of ingredients and finds foods that can be made with them. 
+A compromise between meal prep and food-to-door service.
+Makes meal prep easier.
+Randomize Meal
+
+
+Sketch of final project: see sketch.
+APIs to be used: recipepuppy.com | Untapped API
+
+Breakdown of tasks:
+
+
+Build Nav/Search
+
+
+Markup: (ben/robert)
+Carosole/other display for results
+Container for shopping list
+Buttons for search/selecting recipes/deleting recipes
+weekly planner
+
+Logic:
+AJAX requests to APIS (cody)
+
+Firebase saving user data
+
+printing data to page (jquery)
+
+click events/button events 
+
+Saving events: firebase authentication (google account)Sem
+
+
+
+New Tech: Semantic UI
+
+MVP: search recipes, save it, dump ingredients to list, and adds a random beer pairing
+
+\
+------------------------------
+bonus:
+save as pdf
+
